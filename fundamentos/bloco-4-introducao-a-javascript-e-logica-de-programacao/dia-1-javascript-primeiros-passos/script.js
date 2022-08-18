@@ -78,6 +78,20 @@ if (nota >= 90 && nota < 101){
     console.log('Recuperação')
 }else console.log('invalid number')
 
+// Escreva um programa que defina três números em constantes e retorne true se pelo menos uma das três for par. Caso contrário, ele retorna false.
+//Bonus: use somente um if.
 
+const naruto1 = 10;
+const naruto2 = 10;
+const naruto3 = 10;
 
+if(naruto1 % 2 === 0 || naruto2 % 2 === 0 || naruto3 % 2 === 0){
+    console.log(true)
+}else console.log(false)
 
+//Escreva um programa que defina três números em constantes e retorne true se pelo menos uma das três for ímpar. Caso contrário, ele retorna false.
+//Bonus: use somente um if.
+
+if(naruto1 % 2 != 0 || naruto2 % 2 != 0 || naruto3 % 2 != 0){
+    console.log(true)
+}else console.log(false)
