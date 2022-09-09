@@ -1,11 +1,4 @@
-* {
-    background-color: rgb(240, 233, 233);
-    text-align: center;
-    justify-content: center;
-}
-header{
-    font-size: 50px;
-}
+
 #header-input label{ 
 display: block;
 margin-bottom: 10px;
