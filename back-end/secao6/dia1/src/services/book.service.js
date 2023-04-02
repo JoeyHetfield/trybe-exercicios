@@ -17,7 +17,7 @@ const createBook = async (title, author, pageQuantity) => {
 }
 
 const updateBook = async (id, { title, author, pageQuantity }) => {
-  const updatedBook = await Book.update(
+  const [updatedBook] = await Book.update(
           { title, author, pageQuantity },
       { where: { id } },
   );
@@ -26,7 +26,6 @@ const updateBook = async (id, { title, author, pageQuantity }) => {
 
 const deleteBook = async (id) => {
   const delBook = await Book.destroy({ where: { id }}, );
-  console.log(delBook);
   return delBook;
 }
 
