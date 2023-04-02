@@ -12,18 +12,29 @@ const getId = async (id) => {
 }
 
 const createBook = async (title, author, pageQuantity) => {
-  const books = await Book.create({ title, author, pageQuantity });
-  return books;
+  const newBook = await Book.create({ title, author, pageQuantity });
+  return newBook;
+}
+
+const updateBook = async (id, { title, author, pageQuantity }) => {
+  const updatedBook = await Book.update(
+          { title, author, pageQuantity },
+      { where: { id } },
+  );
+  return updatedBook;
+}
+
+const deleteBook = async (id) => {
+  const delBook = await Book.destroy({ where: { id }}, );
+  console.log(delBook);
+  return delBook;
 }
 
 module.exports = {
   getAll,
   getId,
   createBook,
+  updateBook,
+  deleteBook,
 };
-
-
-
-//Exercício 9: No service BooksService crie um método create que recebe um objeto com os atributos title, author, pageQuantity 
-//e salve um novo livro utilizando o model Book.
 
