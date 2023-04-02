@@ -6,5 +6,7 @@ const Book = require ('./controllers/user.controller');
 app.use(express.json());
 
 app.get('/books', Book.getAll);
+app.get('/books/:id', Book.getId); 
+app.post('/books', Book.createBook);
 
 app.listen(PORT, () => console.log(`Ouvindo na porta ${PORT}!`));
