@@ -3,8 +3,15 @@ const BookService = require('../services/book.service');
 const error500Message = 'Algo deu errado';
 
 const getAll = async (req, res) => {
+  const { author } = req.query;
+
   try {
-    const books = await BookService.getAll();
+    let books;
+    if (author) {
+      books = await BookService.getByAuthor(author);
+    } else {
+      books = await BookService.getAll();
+    }
     return res.status(200).json(books);
   } catch (err) {
     console.log(err.message);
@@ -28,8 +35,8 @@ const getId = async (req, res) => {
 
 const createBook = async (req, res) => {
   try {
-    const { title, author, pageQuantity } = req.body;
-    const newBook = await BookService.createBook(title, author, pageQuantity);
+    const { title, author, pageQuantity, publisher } = req.body;
+    const newBook = await BookService.createBook(title, author, pageQuantity, publisher);
     return res.status(201).json(newBook)
   } catch(err) {
     console.log(err.message);
@@ -39,10 +46,10 @@ const createBook = async (req, res) => {
 
  const updateBook = async (req, res) => {
   try {
-    const { title, author, pageQuantity } = req.body;
+    const { title, author, pageQuantity, publisher } = req.body;
     const { id } = req.params;
   
-    const updatedBook = await BookService.updateBook(id, { title, author, pageQuantity} );
+    const updatedBook = await BookService.updateBook(id, { title, author, pageQuantity, publisher } );
     if (!updatedBook) return res.status(404).json({ message: 'Book not found' });
 
     return res.status(201).json({ message: 'Updated Book!'} )
